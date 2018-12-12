@@ -568,7 +568,8 @@ public class Site implements Runnable, SiteProcedureConnection, SiteSnapshotConn
                 int oldProducerPartitionCount = clusterSources.size() - 1;
                 int newProducerPartitionCount = entry.getValue();
                 assert(oldProducerPartitionCount >= 0);
-                assert(newProducerPartitionCount != -1);
+                assert(newProducerPartitionCount > 0);
+                assert(newProducerPartitionCount >= oldProducerPartitionCount);
 
                 for (int i = oldProducerPartitionCount; i < newProducerPartitionCount; i++) {
                     DRSiteDrIdTracker tracker =
