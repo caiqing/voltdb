@@ -5045,5 +5045,10 @@ public class RealVoltDB implements VoltDBInterface, RestoreAgent.Callback, HostM
     public Initiator getInitiator(int partition) {
         return m_iv2Initiators.get(partition);
     }
+
+    @Override
+    public ElasticService geElasticService() {
+        return m_elasticService;
+    }
 }
 
