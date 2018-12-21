@@ -27,6 +27,7 @@ import org.apache.zookeeper_voltpatches.ZooDefs.Ids;
 import org.apache.zookeeper_voltpatches.ZooKeeper;
 import org.apache.zookeeper_voltpatches.data.Stat;
 import org.voltdb.VoltZK;
+
 import com.google_voltpatches.common.collect.Lists;
 
 /**
@@ -96,9 +97,8 @@ public class CoreZK {
      * format used by the LeaderElector which is HSID_SEQUENCENUM), return
      * the suffix. The suffix cannot have any underscores in it.
      */
-    public static String getSuffixFromChildName(String childName) {
-        final String[] parts = childName.split("_");
-        return parts[parts.length - 1];
+    public static int getSuffixFromChildName(String childName) {
+        return Integer.parseInt(childName.substring(childName.lastIndexOf('_') + 1));
     }
 
     /**
